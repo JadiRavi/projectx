@@ -1,0 +1,23 @@
+<div class="card" style="text-align: center;background-color:grey;width: 50%;margin: auto;border-radius:5px;">
+   <h4> LoginUser</h4> 
+</div>
+
+<div class="card" style="width: 50%;margin: auto;">
+    <form [formGroup]="loginform"> 
+        <div class="card" style="text-align: center;width:auto">
+        <div>
+            <span>userName</span>
+            <input [(ngModel)]="userName"  formControlName="userName" name="username" class="form-control input" type="text" placeholder="username">
+        </div>
+        <div>
+            <span>password</span>
+            <input [(ngModel)]="password"  formControlName="password" name="password" class="form-control input" type="text" placeholder="password" >
+        </div>
+    </div> 
+    <div>
+        <span><button  class="btn btn-primary" style="margin-left: 50%;background-color: blue;margin-top: 10px;" (click)="log()">Login</button></span>
+    </div>
+  
+    </form>
+     
+</div>

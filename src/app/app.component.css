@@ -1,0 +1,31 @@
+li a{
+    display: block;
+   
+    text-align: center;
+    padding:14px 16px;
+    text-decoration:none;
+}
+li a:hover{
+    background-color:aqua;
+}
+ul{
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:lightcoral;
+}
+li{
+    float: left;
+}
+.actvice{
+    background-color: coral;
+}
+.componentStyle{
+width: 50%;
+margin: auto;
+padding: 20px;
+}
+.ng-touched.ng-invalid{
+    border: 1px solid red !important;
+}

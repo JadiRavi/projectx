@@ -1,0 +1,23 @@
+ <div style="text-align: center;background-color: olive;">
+    Students Details
+ </div>
+<div class="card">
+    <table class="table table-bordered">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>fname</th>
+            <th>deparment</th>
+            <th>marks</th>            
+        </tr>
+        <tr *ngFor="let std of student">
+            <td>{{std.id}}</td>
+            <td>{{std.name}}</td>
+            <td>{{std.fname}}</td>
+            <td>{{std.deparment}}</td>
+            <td>{{std.marks}}</td>
+            <td><button class="btn btn secondary"[routerLink]="['/student',std.id]" ><i class="bi bi-eye-fill"></i></button></td>
+        </tr>
+      
+    </table>
+</div>

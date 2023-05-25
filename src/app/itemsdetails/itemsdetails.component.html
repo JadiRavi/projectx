@@ -1,0 +1,31 @@
+ 
+<!-- <div>
+    <div class="card">
+    <div class="card-header" style="text-align: center;">
+        {{item.name}}
+    </div>
+    <div class="card-body">
+    <h5 class="card-title">{{item.id}}</h5>
+    <p class="card-text">{{item.descripation}}</p>
+    <p class="card-text">{{item.price }}</p>
+    <p class="card-text">{{item.ram}}</p>
+    <p class="card-text">{{item.storage}}</p>
+    </div>
+    <div class="card-footer text-body-secondary">
+    <button (click)="addNewItem(items.name)" type="button" class="btn btn-primary btn-lg"  > ADD TO CART</button>
+    </div>
+    </div>
+    </div> -->
+
+
+    <div class="card">
+        {{item.name}}
+    </div>   
+    <div clss="card-body">
+        <p class="card-text">{{item.id}} </p>
+        <p class="card-text">{{item.descripation}} </p>
+        <p class="card-text">{{item.price}} </p>
+        <p class="card-text">{{item.ram}} </p>
+        <p class="card-text">{{item.storage}} </p>
+        <button (click)="addNewItem(item.name)">Add cart</button>
+    </div>

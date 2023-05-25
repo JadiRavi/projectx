@@ -1,0 +1,79 @@
+ <div class="card component">
+  <div style="text-align: center;background-color: darkcyan;"
+   >
+      COMENT CURDE OPERATIONS 
+  </div>
+  <div style="text-align: right;">
+    <button (click)="addComent()" type="button" data-bs-target="#ComentModel" data-bs-toggle="modal">ADD</button>
+  </div>
+  <div>
+    <table class="table table-bordered">
+          <thead>
+                <tr>
+                <th>PostId</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action(s)</th>
+              </tr>
+          </thead>
+          <tbody>
+                <tr *ngFor="let x of cModel |  paginate: { itemsPerPage: 8, currentPage: presentPage}">
+                  <td>{{x.postId}}</td>
+                  <td>{{x.id}}</td>
+                  <td>{{x.name}}</td>
+                  <td>{{x.email}}</td>
+                  <td>
+                    <button (click)="editComent(x)" 
+                    data-bs-target="#ComentModel" data-bs-toggle="modal" type="button"><i class="bi bi-pen"></i></button>
+                  </td>                  
+                  <td>
+                    <button (click)="deleteComent(x.id)" type="button"><i class="bi bi-trash-fill"></i></button>
+                  </td>
+                  <button type="button" [routerLink]="['/coments',x.id]"  class="btn btn-info" ><i class="bi bi-person-video2"></i></button>
+                </tr>
+               <tr>
+                <td colspan="6">
+                  <pagination-controls (pageChange)=" presentPage  = $event"></pagination-controls>
+                </td>
+               </tr>
+          </tbody>
+    </table>
+   
+
+<!-- Modal -->
+<div class="modal fade" id="ComentModel" tabindex="-1" aria-labelledby="ComentModelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ComentModelLabel">{{modelHeader}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div>
+            {{ alertMessage}}
+          </div>
+              <div class="mb-3">
+                <input [(ngModel)]="cObj.postId"  name=" postId" type=" number" class="form-control" placeholder="postId">
+              </div>
+              <div class="mb-3">
+                <input [(ngModel)]="cObj.id"  name="id" type="number" class="form-control" placeholder="id">
+              </div>
+              <div class="mb-3">
+                <input [(ngModel)]="cObj.name"  name="name" type=" text" class="form-control" placeholder="name">
+              </div>
+              <div class="mb-3">
+                <input [(ngModel)]="cObj.email"  name="email" type="email" class="form-control" placeholder="email">
+              </div>
+              
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)=" saveComent()"  type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>

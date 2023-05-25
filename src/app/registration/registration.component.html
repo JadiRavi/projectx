@@ -1,0 +1,27 @@
+<div style="text-align: center;background-color: darkorange;">
+    Registration
+</div>
+
+
+<div class="card">
+<table class="table table-bordered" style="text-align:center;margin: auto;">
+    <tr>
+        <th>#id</th>
+        <th>Name</th>
+        <th>SurName</th>
+        <th>FatherName</th>
+        <th>MotherName</th>
+        <th>phoneNumber</th>
+    </tr>
+    <tr *ngFor="let regs of register ">
+        <td>{{regs.id}}</td>
+        <td>{{regs.name}}</td>
+        <td>{{regs.surName}}</td>
+        <td>{{regs.fatherName}}</td>
+        <td>{{regs.motherName}}</td>
+        <td>{{regs.phoneNumber}}</td>
+        <td><button [routerLink]="['/registration',regs.id,]" class="btn btn-info"><i class="bi bi-eye-fill"></i></button></td>
+        
+    </tr>     
+</table>
+</div>

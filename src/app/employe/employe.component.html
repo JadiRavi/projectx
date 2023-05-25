@@ -1,0 +1,80 @@
+<div style="text-align: center;background-color: #14980d;" >
+    DATABASE CURDOPARATIONS
+</div>
+
+<div>
+    <button (click)="addEmploye()" style="float: right;border-radius: 5px;background-color: blue;margin-top: 5px;" data-bs-target="#EmployeModel" data-bs-toggle="modal">ADD</button>
+ </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>MobileNumber</th>
+                <th>Salary</th>
+                <th>City</th>
+                <th colspan="2" style="text-align: center;">Actions</th>
+            </tr>
+            <tr *ngFor=" let employe of employee;index as y ">  
+                <td>{{y+1}}</td>           
+                <td>{{employe.name}}</td>
+                <td>{{employe.email}}</td>
+                <td>{{employe.gender}}</td>
+                <td>{{employe.mobileNumber}}</td>
+                <td>{{employe.salary}}</td>
+                <td>{{employe.city}}</td>
+                <td>
+                    <button (click)="editeEmploye(employe)"  type="button" data-bs-target="#EmployeModel" data-bs-toggle="modal" style="background-color: #14980d;border-radius: 5px;">EDITE</button>
+                </td>
+                <td>
+                    <button (click)="deleteEmploye(employe.id)"  type="button" style="background-color: rgb(255, 0, 0);border-radius: 5px;">DELETE<i class="bi bi-x-lg"></i></button>
+                </td>                 
+            </tr>
+            
+        </table>
+    
+  
+  <!-- Modal -->
+  <div class="modal fade" id="EmployeModel" tabindex="-1" aria-labelledby="EmployeModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="EmployeModelLabel">{{modelHeader}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div>
+                <form [formGroup]="employeform"  > 
+                    <div class="mb-3">
+                        <input [(ngModel)]="employes.name" name="name" formControlName="name"  type="text"  placeholder="enter ur name" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <input [(ngModel)]="employes.email" name="email" formControlName="email"   type="email"  placeholder="enter ur email" class="form-control">
+          ~          </div>
+                    <div class="mb-3">
+                        <span>Gender:</span>
+                        <input [(ngModel)]="employes.gender" formControlName="gender"    style="margin-left: 20px;" type="radio" name="gender" value="Male" >Male
+                        <input [(ngModel)]="employes.gender" formControlName="gender"   style="margin-left: 40px;" type="radio" name="gender" value="Fmale">Fmale
+                        <input [(ngModel)]="employes.gender" formControlName="gender"    style="margin-left: 60px;" type="radio" name="gender" value="Others">Others
+                    </div>
+                    <div class="mb-3">
+                        <input [(ngModel)]="employes.mobileNumber" name="mobileNumber" formControlName="mobileNumber"   type="number"  placeholder="enter ur mobileNumber" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <input [(ngModel)]="employes.salary" name="salary"   type="text" formControlName="salary"   placeholder="enter ur Salary" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <input  [(ngModel)]="employes.city" name="city"   type="text" formControlName="city"   placeholder="enter ur City" class="form-control">
+                    </div>
+                </form>
+            </div>
+       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button   (click)="saveEmploye()" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

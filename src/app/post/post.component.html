@@ -1,0 +1,61 @@
+ <div class="card componentStyle">
+    <div style="text-align: center;background-color: grey;color: white;">
+        POST CURD OPERATIONS
+    </div>
+    <div style="text-align:right;">
+        <button (click)="addPost() " data-bs-target="#PostModel" data-bs-toggle="modal" type="button" class="btn btn-primary">ADD</button>
+    </div>
+        <div>
+            <table class="table table-bordered">                
+                    <tr>
+                        <th>User Name</th>
+                        <th>Id</th>
+                        <th>Title</th> 
+                        <th colspan="2" style="text-align: center;">Actions(s)</th>                       
+                    </tr>
+                    <tr *ngFor="let post of pModel">
+                        <td>{{post.userId}}</td>
+                        <td>{{post.id}}</td>
+                        <td>{{post.title}}</td>
+                        <td>
+                          <button data-bs-target="#PostModel" data-bs-toggle="modal" type="button" 
+                           (click)="editPost(post)"  style="background-color:green;" ><i class="bi bi-pencil-square"></i></button>
+                          </td>
+                        <td><button (click)="deletePost(post.id)" type="button"
+                           style="background-color: red;"><i class="bi bi-trash3-fill"></i></button></td>
+                           <td><button type="button" class="btn btn-info" [routerLink]="['/post',post.id]"><i class="bi bi-eye"></i></button></td>
+                    </tr>                 
+                </table> 
+              
+  
+  <!-- Modal -->
+  <div class="modal fade" id="PostModel" tabindex="-1" aria-labelledby="PostModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="PostModelLabel">{{ modelHeader}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <form>           
+            <div class="mb-3">
+                <input [(ngModel)]="pObj.userId" name="userId" type="number" class="form-control" placeholder="userid">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="pObj.id" name="id" type="number" class="form-control" placeholder="id">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="pObj.title" name="title" type="text" class="form-control" placeholder="title">
+            </div>
+         </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="savePost()"  >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+              </div>
+         </div>
+        

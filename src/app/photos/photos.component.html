@@ -1,0 +1,79 @@
+ <div class="card componentStyle">
+    <div style="text-align: center;color: white;background-color:gold;">PHOTOS</div>
+    <div style="text-align: right;border-radius: px;">
+
+        <button type="button" style="background-color: blue;border-radius: 5px;"
+        data-bs-target="#PhotosMedel" data-bs-toggle="modal">ADD</button>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#AlbumId</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Url</th>
+                    <th>ThumbnailUrl</th>
+                    <th colspan="2" style="text-align: center;">Action(s)</th>            
+                </tr>
+            </thead>
+            <tbody>
+                 <tr *ngFor="let photo of photos">
+                    <td>{{photo.albumId}}</td>
+                    <td>{{photo.id}}</td>
+                    <td>{{photo.title}}</td>
+                    <td>{{photo.url}}</td>
+                    <td>{{photo.thumbnailUrl}}</td>
+                    <td>
+                        <button (click)="editePhotos(photo)"
+                         data-bs-target="#PhotosMedel" data-bs-toggle="modal" type="button" style="background-color: green;color: white;border-radius: 5px;"><i class="bi bi-pencil-square"></i></button>
+                    </td>
+                    <td>
+                        <button (click)="deletPhotos(photo.id)" class="btn btn-secondary" 
+                        type="button" style="background-color: red;color: white;border-radius: 5px;"><i class="bi bi-trash"></i></button>
+                    </td>
+                    <td><button type="button" class="btn btn-info" [routerLink]="['/photos',photo.id,]"><i class="bi bi-eye"></i></button></td>
+                    
+                  </tr>
+            </tbody>
+        </table>
+      
+  
+  <!-- Modal -->
+  <div class="modal fade" id="PhotosMedel" tabindex="-1" aria-labelledby="PhotosMedelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="PhotosMedelLabel">{{modelHeader}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form >
+           
+            <div class="mb-3">
+                <input [(ngModel)]="photoObj.albumId" name="albumId" type="number" class="form-control" placeholder="albumId">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="photoObj.id" name="id" type="number" class="form-control" placeholder="id">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="photoObj.title" name="title" type="text" class="form-control" placeholder="title">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="photoObj.url" name="url" type="text" class="form-control" placeholder="url">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="photoObj.thumbnailUrl" name="thumbnailUrl" type="text" class="form-control" placeholder="thumbnailUrl">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)= "savePhotos()"   type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+ </div>

@@ -1,0 +1,72 @@
+<div class="card componentStyle" >
+    <div style="text-align: center;background-color: indigo;color: white;">Todos</div>
+    <div style="text-align: right;">
+        <button (click)="addTodos()" type="button" data-bs-target="#TodosModel" data-bs-toggle="modal">ADD</button>
+    </div>
+    <div>
+        <table class="table table-bordered ">
+            <thead>
+                <tr>
+                    <th>UserId</th>
+                    <th>Id</th>
+                    <th>Title</th>   
+                    <th>Completed</th>   
+                    <th>Action(s)</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of todos  | paginate: { itemsPerPage: 10, currentPage: curruntPage}">
+                    <td>{{todo.userId}}</td>
+                    <td>{{todo.id}}</td>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.completed}}</td>  
+                    <td>
+                        <button (click)=" editeTodos(todo)" style="background-color: blue;"
+                        data-bs-target="#TodosModel" data-bs-toggle="modal" type="button"><i class="bi bi-pencil-fill"></i></button>
+                    </td>
+                    <td><button (click)="deletTodos(todo.id)" type="button" style="background-color:red;"><i class="bi bi-trash3-fill"></i></button></td>  
+                    <td><button type="button" class="btn btn-info" [routerLink]="['/todos',todo.id]"><i class="bi bi-eye"></i></button></td>            
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="6">
+                        <pagination-controls (pageChange)=" curruntPage  = $event"></pagination-controls>
+                    </td>
+                 </tr>   
+            </tbody>
+        </table>
+   
+  
+  <!-- Modal -->
+  <div class="modal fade" id="TodosModel" tabindex="-1" aria-labelledby="TodosModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="TodosModelLabel">{{modelHeader}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form>
+       
+            <div class="mb-3">
+                <input [(ngModel)]="todosObj.userId" type="number" name="userId" class="form-control" placeholder="UserId">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="todosObj.id" type="number"  name="id" class="form-control" placeholder="id">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="todosObj.title" type="text"  name="title" class="form-control" placeholder="title">
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="todosObj.completed" type="text"  name="completed" class="form-control" placeholder="completed">
+            </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="saveTodos()"  data-bs-target="#TodosModel" data-bs-toggle="modal" type="button" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+</div>

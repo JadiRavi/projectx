@@ -1,0 +1,16 @@
+<div class="componentStyle" style="text-align: center;background-color: cornflowerblue;width: 50%;margin: auto;">
+    Loginl
+</div>
+<div>
+<table  class="table table-bordered" style="text-align: center;margin: auto;">
+    <tr>
+         <th>UerName</th>
+         <th>Password</th>
+    </tr>
+    <tr *ngFor="let x of login">
+        <td>{{x.id}}</td>
+        <td>{{x.password}}</td>
+        <td><button [routerLink]="['login/log',x.id]"><i class="bi bi-eye-fill"></i></button></td>
+    </tr>
+</table>
+</div>

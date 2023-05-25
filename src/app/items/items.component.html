@@ -1,0 +1,37 @@
+<!-- 
+<div> 
+<table class="tabale table-bordered">
+    <tr *ngFor="let _items of items">
+        
+        <td>{{_items.id}} </td>
+        <td>{{_items.name}} </td>
+        <td>{{_items.descripation}} </td>
+        <td>{{_items.price}} </td>
+        <td>{{_items.expirationDate}} </td>        
+    </tr>
+</table>
+</div>  -->
+
+<!-- <div class="card componentStyle">
+    <div class="margin-bottom:5px"> -->
+        <!-- ItemCount:{{ _itemCount}} 
+     <button class="btn btn-primary" style="float:right">ADD</button>   
+    </div>
+    <div class="mb-3" *ngFor="let x of items">
+        <itemdetails (NewItemEvent)="addItem($event)" [item]="x"></itemdetails>
+    </div>
+</div>
+     -->
+
+     
+        <div class="card componentStyle">
+            <div class="margin-bottom:5px"> 
+                ItemCount:{{ _itemCount}} 
+             <button class="btn btn-primary" style="float:right">ADD</button>   
+            </div>
+        </div>
+
+    <div *ngFor="let x of items" style="margin: auto;width: 1200px;">
+        <itemsdetails (_newItemEvent)="addItem($event)" [item]="x" ></itemsdetails>      
+    </div>
+     
